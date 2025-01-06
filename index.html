@@ -12,20 +12,38 @@
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f8f9fa;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .menu h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+      gap: 20px;
     }
 
     .card {
-      width: 300px;
       background-color: white;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
+      margin-bottom: 20px;
     }
 
     .card:hover {
@@ -39,24 +57,7 @@
 
     .card-info {
       padding: 16px;
-    }
-
-    .card-info .add-to-cart {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
-      background-color: #f8f9fa;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .card-info .add-to-cart:hover {
-      background-color: #e0e0e0;
+      text-align: center;
     }
 
     .card-info h2 {
@@ -76,6 +77,110 @@
       color: #6c757d;
       margin-bottom: 5px;
     }
+
+    .card-info button {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .card-info button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .cart {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 500px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item p {
+      font-size: 16px;
+    }
+
+    .cart-item span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+    }
+
+    .cart-total p {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .cart-total button {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cart-total button:hover {
+      background-color: #e64a19;
+    }
+
+    /* Media Queries for Mobile and Tablet */
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 1 or 2 items per row on smaller screens */
+      }
+
+      .cart {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-info h2 {
+        font-size: 16px;
+      }
+
+      .card-info p {
+        font-size: 14px;
+      }
+
+      .card-info button {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
+      .cart-item p {
+        font-size: 14px;
+      }
+
+      .cart-total p {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -84,7 +189,7 @@
     <div class="menu">
       <h1>Desserts</h1>
       <div class="grid-container">
-        <!-- Dessert Card 1 -->
+        <!-- Dessert Cards -->
         <div class="card">
           <img src="https://via.placeholder.com/150" alt="Waffle with Berries">
           <div class="card-info">
@@ -93,8 +198,6 @@
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 2 -->
         <div class="card">
           <img src="https://via.placeholder.com/150" alt="Vanilla Bean Crème Brûlée">
           <div class="card-info">
@@ -103,8 +206,6 @@
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 3 -->
         <div class="card">
           <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
           <div class="card-info">
@@ -113,72 +214,67 @@
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 4 -->
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 5 -->
+
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 6 -->
+
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 7 -->
+
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 8 -->
+
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
-      
-        <!-- Dessert Card 9 -->
+
         <div class="card">
-          <img src="https://via.placeholder.com/150" alt="Macaron Mix of Five">
+          <img src="https://via.placeholder.com/150" alt="Chocolate Cake">
           <div class="card-info">
-            <h2>Macaron Mix of Five</h2>
-            <p>$8.00</p>
+            <h2>Chocolate Cake</h2>
+            <p>$5.00</p>
             <button>Add to Cart</button>
           </div>
         </div>
+
+
       </div>
     </div>
 
     <!-- Cart Section -->
-    <div class="cart">
-      <h2>Your Cart (7)</h2>
+    <div style="margin-top: 19px;" class="cart">
+      <h2 style="margin-top: -10px;" >Your Cart (7)</h2>
       <div class="cart-item">
         <p>Classic Tiramisu</p>
         <span>1x $5.50</span>
@@ -197,7 +293,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
 </html>
